@@ -1,0 +1,26 @@
+#include<stdio.h>
+int main(){
+    int a[100000];
+    long int n,max=0,cishu=0,flag=0;
+    while(scanf("%d",&n)!=EOF&&1<=n&&n<=1e9){
+        for(int i=0;i<n;i++){
+            scanf("%ld",&a[i]);
+        }
+          for(int i=1;i<n;i++){
+              if(a[i-1]<a[i]){
+                  max+=a[i]-a[i-1];
+                 if(flag==0) 
+                  cishu++;
+                  flag=1;
+                  
+              }
+              if(a[i-1]>a[i]){
+                  cishu+=flag;
+                  flag=0;
+              }
+          }
+            cishu+=flag;
+            printf("%ld %ld",max,cishu);
+        }
+    return 0;
+}
