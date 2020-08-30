@@ -1,0 +1,35 @@
+/**
+ * struct ListNode {
+ *	int val;
+ *	struct ListNode *next;
+ * };
+ */
+
+class Solution {
+public:
+    /**
+     * 
+     * @param head ListNode类 
+     * @param n int整型 
+     * @return ListNode类
+     */
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        // write code here
+        //另加一个结点，使首结点的删除与其他结点相同
+        ListNode *dummy=new ListNode(0);
+        dummy->next=head;
+        ListNode *first=dummy;
+        ListNode *second=head;
+        while(n--){
+            second=second->next;
+        }
+        while(second){
+            first=first->next;
+            second=second->next;
+        }
+        ListNode *temp=first->next;
+        first->next=first->next->next;
+        delete temp;
+        return dummy->next;
+    }
+};
