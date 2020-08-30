@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    char str[100000];
+    // 判断 y，x后面有多少y，就替换几次，替换之后，y数量*2
+    // scanf("%s",str);// 7ms,580kb
+    gets(str);
+    long int len = strlen(str);
+    long int num_y = 0, time = 0;
+    for (long int i = len-1; i >= 0; i--)
+    {
+        if (str[i] == 'y')
+            num_y++;
+        else
+        {
+            time = (time + num_y)%(1000000007);
+            num_y = (num_y*2)%(1000000007);
+        }
+    }
+    
+    printf("%ld",time);
+    
+    return 0;
+}
