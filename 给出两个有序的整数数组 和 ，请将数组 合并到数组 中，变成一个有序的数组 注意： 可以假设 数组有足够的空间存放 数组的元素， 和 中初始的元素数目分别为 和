@@ -1,0 +1,19 @@
+/**
+ * 
+ * @param A int整型一维数组 
+ * @param ALen int A数组长度
+ * @param B int整型一维数组 
+ * @param BLen int B数组长度
+ * @return void
+ */
+int func(const void *a, const void *b)
+{
+    return *(int*)a > *(int*)b;
+}
+
+void merge(int* A, int ALen, int m, int* B, int BLen, int n) {
+    // write code here
+    int *p = A + m;
+    memcpy(p, B, n * sizeof(int));
+    qsort(A, m + n, 4, func);
+}
