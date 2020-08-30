@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+    int fun(int n);
+    int x;
+    for(x=0;x<=256;x++)
+    {
+        if(x*x==fun(x*x))
+            printf("%d\n",x);
+    }
+    return 0;
+}
+
+int fun(int n)
+{
+    int sum=0;
+    while(n)
+    {
+        sum=sum*10+n%10;
+        n/=10;
+    }
+    return sum;
+}
