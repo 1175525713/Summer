@@ -1,0 +1,15 @@
+#include<stdio.h>
+int main()
+{
+    int n,i,b;
+    int a[101] = {0};
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&b);
+        a[b]++;
+    }
+    scanf("%d",&i);
+    printf("%d",a[i]);
+    return 0;
+}
