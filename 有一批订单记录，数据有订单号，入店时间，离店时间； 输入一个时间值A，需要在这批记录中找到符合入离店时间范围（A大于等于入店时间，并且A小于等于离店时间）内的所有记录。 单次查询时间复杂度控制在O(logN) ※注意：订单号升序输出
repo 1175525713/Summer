@@ -1,0 +1,42 @@
+#include<stdio.h>
+int main()
+{
+	int N;
+	scanf("%d",&N);
+	int T,j=0;
+	scanf("%d",&T);
+	int n[N],I[N],L[N],ans[N],s[N];
+	for(int i=0;i<N;i++)
+	{
+		scanf("%d %d %d",&n[i],&I[i],&L[i]);
+	}
+	for(int i=0;i<N;i++)
+	{
+		if(I[i]<=T&&L[i]>=T)
+		{
+			ans[j]=n[i];
+			j++;
+		}
+	}
+	if(j==0)
+	{
+		printf("null\n");
+		return 0;
+	}
+	for(int i=0;i<j;i++)
+	{
+		int a=0;
+		for(int k=0;k<j;k++)
+		{
+			if(ans[i]>ans[k])
+			{
+				a++;
+			}
+		}
+		s[a]=ans[i];
+	}
+	for(int i=0;i<j;i++)
+	{
+		printf("%d\n",s[i]);
+	}
+}
