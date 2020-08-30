@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	int t,i,j,k,len,res;
+	char buf[100];
+	scanf("%d",&t);
+	for(i=0;i<t;i++)
+	{
+		res=-1;
+		scanf("%s",buf);
+		len=strlen(buf);
+		for(j=0,k=len-1;j<len/2;j++,k--)
+		{
+			if(buf[j]!=buf[k])
+			{
+				if(buf[j+1]==buf[k])
+				{
+					res=j;
+				}
+				else if(buf[j]==buf[k-1])
+				{
+					res=k;
+				}
+				break;
+			}
+		}
+		printf("%d\n",res);
+	}
+}
