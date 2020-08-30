@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<string.h>
+static int a[100001];//和路由器那个题是一样的
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    memset(a,0,sizeof(a));
+    int lenth=0;
+    for(int i=1;i<=n;i++)
+    {
+        int temp_1,temp_2;
+        scanf("%d %d",&temp_1,&temp_2);
+        a[temp_1-1]--;
+        a[temp_2-1]++;
+        if(temp_2>lenth)
+        {
+            lenth=temp_2;
+        }
+    }
+    int max=0;
+    int temp_3=0;
+    for(int i=lenth;i>=0;i--)
+    {
+        temp_3+=a[i];
+        if(temp_3>max)
+        {
+            max=temp_3;
+        }
+    }
+    printf("%d",max);
+    return 0;
+ }
