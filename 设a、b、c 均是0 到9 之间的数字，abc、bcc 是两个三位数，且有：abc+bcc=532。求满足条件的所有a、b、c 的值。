@@ -1,0 +1,20 @@
+#include<stdio.h>
+
+int main()
+{
+    int a, b, c, m, n, i;
+	int t[2] = {1, 6};   //c的值只能为1或者6，以数组形式存储c的可能值
+    for(a = 1; a < 6; a++)
+    {
+        for(b = 1; a + b < 6; b++)  //a+b的值小于等于5
+        {
+        	for(i = 0; i < 2; i++)
+        	{
+        		c = t[i];
+        		m = a*100 + b*10 + c;
+        		n = b*100 + c*10 + c;
+        		if(m + n == 532) printf("%d %d %d\n", a, b, c);
+			}
+		}
+    }
+}
