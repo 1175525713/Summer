@@ -1,0 +1,37 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+/*int main()
+{
+    int a[10]={0};
+    int i,d,j;
+	srand((unsigned)time(NULL));
+    for(i=0;i<10;i++)
+	{
+        a[i]=rand()%100+1;
+        
+    }
+   
+    for(i=0;i<10;i++)
+    {
+    	for(j=1;j<10-i;j++)
+    	{
+    		if(a[j]>a[j-1])
+    		{
+    			a[j]=a[j]^a[j-1];
+    			a[j-1]=a[j]^a[j-1];
+    			a[j]=a[j]^a[j-1];
+			}
+		}
+	}
+	   for(i=0;i<10;i++)
+    {
+        printf("%d\n",a[i]);
+        
+    }
+}*/
+int main()
+{
+    int a=1;
+    printf("%d",a);
+}
