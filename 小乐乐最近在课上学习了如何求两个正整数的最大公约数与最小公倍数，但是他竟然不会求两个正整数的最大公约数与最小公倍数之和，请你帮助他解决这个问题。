@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main(void)
+{
+    long n,m;
+    long max,min,tmp;
+    long common_min,common_max,common_sum;
+    
+    scanf("%ld %ld",&n,&m);
+    
+    //辗转相除法求最大公约数
+    //用两数的最大值%最小值，然后用最小值%所得余数，直到余数为0
+    max = n;
+    min = m;
+    
+    if(n < m)
+    {
+        max = m;
+        min = n;
+    }
+    
+    while(min)
+    {
+        tmp = max % min;
+        max = min;
+        min = tmp;
+    }
+    common_max  = max;
+    
+    //最小公倍数 = 两个数的乘积/最大公约数
+    common_min = n * m / common_max;
+    
+    common_sum = common_min + common_max;
+    printf("%ld",common_sum);
+    
+    return 0;
+}
