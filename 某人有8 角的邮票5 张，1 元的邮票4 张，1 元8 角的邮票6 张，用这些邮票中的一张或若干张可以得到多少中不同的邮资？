@@ -1,0 +1,21 @@
+#include<stdio.h>
+
+int main(void){
+    int count=8*5+10*4+18*6;
+    int total=0;
+    int sum[8*5+10*4+18*6]={0};
+
+    for(int i=0;i<=5;i++){
+        for(int j=0;j<=4;j++){
+            for(int k=0;k<=6;k++){
+                int num=(i*0.8+j*1+k*1.8)*10;
+                if(sum[num]==0)
+                    total++;
+                sum[num]=num;
+                
+            }
+        }
+    }
+        
+   printf("%d",total-2);
+}
