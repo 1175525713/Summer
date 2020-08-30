@@ -1,0 +1,32 @@
+#include <cstdio>
+#include <cctype>
+#include <cstring>
+#define _for(i,a,b) for(int i(a),I(b);i<=I;++i)
+#define gc() (p1==p2&&(p1=bf,p2=bf+fread(bf,1,1<<21,stdin),p1==p2)?EOF:*p1++)
+const int N = 1000005, NEGINF = 0xc0c0c0c0;
+char bf[1 << 21], *p1 = bf, *p2 = bf;
+template <class T> void read(T& x) {
+    char c(gc()), flg(0); T t(0);
+    for (; c != EOF&&!isdigit(c); c = gc()) flg = c == '-';
+    for (; isdigit(c); c = gc()) t = 10 * t + (c & 15);
+    x = flg ? -t : t;
+}
+//-----------------INPUT-----------------//
+int n, nums[N];
+   
+int main() {
+    static int stk[N], left[N], rite[N];
+    int top = 1;
+    read(n);
+    nums[0] = NEGINF;
+    _for(i, 1, n) read(nums[i]);
+    for (int i = 1; i <= n;) {
+        if (nums[i] >= nums[stk[top - 1]]) {
+            left[i] = nums[i] > nums[stk[top - 1]] ? stk[top - 1] : left[stk[top - 1]];
+            stk[top++] = i++;
+        } else {
+            rite[stk[--top]] = i;
+        }
+    }
+    _for(i, 1, n) printf("%d %d\n", left[i] - 1, rite[i] - 1);
+}
