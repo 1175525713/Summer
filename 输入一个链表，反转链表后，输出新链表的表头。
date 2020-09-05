@@ -1,0 +1,26 @@
+/**
+ * struct ListNode {
+ *	int val;
+ *	struct ListNode *next;
+ * };
+ */
+
+/**
+ * 
+ * @param pHead ListNode类 
+ * @return ListNode类
+ */
+struct ListNode* ReverseList(struct ListNode* pHead ) {
+    // write code here
+    struct ListNode* save=NULL;
+    struct ListNode* tail=pHead;
+    struct ListNode* prev=NULL;
+    while(tail!=NULL)
+    {
+        save = tail->next;
+        tail->next = prev;
+        prev = tail;
+        tail = save;
+    }
+    return prev;
+}
