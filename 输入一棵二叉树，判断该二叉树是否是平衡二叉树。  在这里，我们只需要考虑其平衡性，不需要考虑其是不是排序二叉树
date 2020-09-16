@@ -1,0 +1,30 @@
+/**
+ * struct TreeNode {
+ *	int val;
+ *	struct TreeNode *left;
+ *	struct TreeNode *right;
+ * };
+ */
+
+/**
+ * 
+ * @param pRoot TreeNode类 
+ * @return bool布尔型
+ */
+#include <stdbool.h>
+
+int tree_depth(struct TreeNode*root){
+    if(!root) return 0;
+    int dp1=tree_depth(root->left);
+    int dp2=tree_depth(root->right);
+    return 1+(dp1>dp2?dp1:dp2);
+}
+bool IsBalanced_Solution(struct TreeNode* pRoot ) {
+    // write code here
+    if(!pRoot) return true;
+    int dp1=tree_depth(pRoot->left);
+    int dp2=tree_depth(pRoot->right);
+    dp1=dp1-dp2;
+    if(dp1<-1||dp1>1) return false;
+    return IsBalanced_Solution(pRoot->left)&&IsBalanced_Solution(pRoot->right);
+}
