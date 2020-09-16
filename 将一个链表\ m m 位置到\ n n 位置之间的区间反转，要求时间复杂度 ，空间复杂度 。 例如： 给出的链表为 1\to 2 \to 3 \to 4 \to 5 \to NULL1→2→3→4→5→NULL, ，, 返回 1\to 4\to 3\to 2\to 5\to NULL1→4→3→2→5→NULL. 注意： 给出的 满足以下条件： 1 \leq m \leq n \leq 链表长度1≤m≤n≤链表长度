@@ -1,0 +1,34 @@
+/**
+ * struct ListNode {
+ *	int val;
+ *	struct ListNode *next;
+ * };
+ */
+
+class Solution {
+public:
+    /**
+     * 
+     * @param head ListNode类 
+     * @param m int整型 
+     * @param n int整型 
+     * @return ListNode类
+     */
+    ListNode* reverseBetween(ListNode* head, int m, int n) {
+        // write code here
+        ListNode* res = new ListNode(0);
+        res->next = head;
+        ListNode* pre = res;
+        for (int i = 0; i < m - 1; i++) {
+            pre = pre->next;
+        }
+        ListNode* cur = pre->next;
+        for (int i = m; i < n; i++) {
+            ListNode* temp = cur->next;
+            cur->next = temp->next;
+            temp->next = pre->next;
+            pre->next = temp;
+        }
+        return res->next;
+    }
+};
