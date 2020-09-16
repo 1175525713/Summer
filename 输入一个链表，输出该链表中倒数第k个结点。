@@ -1,0 +1,35 @@
+/**
+ * struct ListNode {
+ *	int val;
+ *	struct ListNode *next;
+ * };
+ */
+
+/**
+ * 
+ * @param pListHead ListNode类 
+ * @param k int整型 
+ * @return ListNode类
+ */
+struct ListNode* FindKthToTail(struct ListNode* pListHead, int k ) {
+    // write code here
+    struct ListNode *pList1=pListHead;
+    struct ListNode *pList2=pListHead;
+    //pList2 shift right k times
+    for(int i=0;i<k;i++)
+    {
+       if(pList2==NULL)
+           return NULL;
+       pList2=pList2->next;
+    }
+    //pList2 and pList1 move simultaneously
+    //when pList2 moves toward the end (nullptr),
+    //pList1 will moves at the k-th from last
+    //IN ANOTHER WORDS, they moves 【total - k】 times in this while-loop
+    while(pList2)
+    {
+        pList1=pList1->next;
+        pList2=pList2->next;
+    }
+    return pList1;
+}
