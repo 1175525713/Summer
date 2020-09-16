@@ -1,0 +1,49 @@
+class Solution {
+public:
+    /**
+     * retrun the longest increasing subsequence
+     * @param arr int整型vector the array
+     * @return int整型vector
+     */
+    vector<int> LIS(vector<int>& nums) {
+        // write code here
+        if (nums.size() <= 1)
+            return nums;
+        vector<int> dp(nums.size(), 0);
+        vector<int> pos(nums.size(), 0);//pos[i]=j用来记录nums[i]在dp中的第j个位置
+        int len = 0;
+        dp[len] = nums[0];
+        for (int i = 1; i < nums.size(); ++i) {
+            if (nums[i] > dp[len]) {
+                dp[++len] = nums[i];
+                pos[i] = len;
+            }
+            else {
+                int low = 0, high = len;
+                while (low <= high) {
+                    int mid = (low + high) >> 1;
+                    if (dp[mid] < nums[i])
+                        low = mid + 1;
+                    else 
+                        high = mid - 1;
+                }
+                if (low != -1) { 
+                    dp[low] = nums[i];  
+                    pos[i] = low; 
+                }
+                else { 
+                    dp[0] = nums[i]; 
+                    pos[i] = 0; 
+                }
+            }
+        }
+        vector<int> res(len + 1, INT_MAX);
+        for (int i = nums.size() - 1; i >= 0; i--) {
+            if (pos[i] == len) {
+                res[len] = min(res[len], nums[i]);
+                len--;
+            }
+        }
+        return res;
+    }
+};
