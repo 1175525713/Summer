@@ -1,0 +1,32 @@
+package main
+import . "nc_tools"
+/*
+ * type ListNode struct{
+ *   Val int
+ *   Next *ListNode
+ * }
+ */
+
+/**
+ * 
+ * @param head ListNode类 
+ * @return ListNode类
+*/
+func detectCycle( head *ListNode ) *ListNode {
+    // write code here
+    fast, slow := head, head
+    for fast != nil && fast.Next != nil {
+        fast = fast.Next.Next
+        slow = slow.Next
+        
+        if fast == slow {
+            slow2 := head 
+            for slow2 != slow {
+                slow2 = slow2.Next
+                slow = slow.Next
+            }
+            return slow
+        }
+    }
+    return nil
+}
